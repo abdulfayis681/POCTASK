@@ -1,0 +1,22 @@
+replicaCount: 1
+revisionHistoryLimit: 1
+image:
+  repository: abdulfayis/backend
+  tag: v12
+  pullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 200m
+      memory: 300Mi
+livenessProbe:
+  initialDelaySeconds: 300
+  periodSeconds: 100
+service:
+  name: backend
+  type: ClusterIP
+  servicePort: 5000
+services:
+  mongo:
+     url: mongodb://mongodb-0.mongodb-headless.default.svc.cluster.local:27017
+    #  name: todos
+    #  env: production
